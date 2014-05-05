@@ -1,0 +1,18 @@
+<h1><%= @sheet.title %></h1>
+
+<%= simple_format @sheet.sanitize_text %>
+
+<%= content_for :submenu do %>
+  <ul>
+    <% @sheet.children.each do |child| %>
+      <%= menu(child) %>
+    <% end %>
+  </ul>
+
+  <%= link_to "Редактирование страницы", edit_sheet_path(@sheet) %>
+
+  <div class='cleaner h10'></div>
+
+  <%= link_to "Добавление подстраницы", add_sheet_path(@sheet) %>
+
+<% end %>

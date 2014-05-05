@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MySaLWiki</title>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+<table>
+  
+  <thead>
+    <tr>
+      <th class='menu'>Основное меню</th>
+      <th class='sheet'>Страница</th>
+      <th class='submenu'>Подменю страницы</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>
+        <div class='padding'>&nbsp;</div>
+
+        <ul>
+          <% @sheets.each do |sheet| %>
+            <%= menu(sheet) %>
+          <% end %>
+        </ul>
+
+        <%= link_to "Добавление страницы", new_sheet_path %>
+      </td>
+      <td class='content'>
+        <%= yield %>
+      </td>
+      <td class='submenu'>
+        <div class='padding'>&nbsp;</div>
+        <%= yield(:submenu) %>        
+      </td>
+    </tr>
+  </tbody>
+
+</table>
+
+
+</body>
+</html>

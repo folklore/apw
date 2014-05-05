@@ -1,0 +1,17 @@
+.cleaner{
+  clear: both;
+  display: block;
+  font-size:0;
+  line-height:0;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+
+  $i: 5;
+  @while $i <= 15 {
+    &.h#{$i}{
+      height: #{$i}px;
+    }
+    $i: $i+5;
+  }
+}

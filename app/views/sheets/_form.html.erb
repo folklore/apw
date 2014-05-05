@@ -1,0 +1,41 @@
+<%= form_for @sheet,
+             url: @sheet.new_record? ? sheets_path : update_path(id: @sheet.id) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :text %>
+  <%= f.text_area :text %>
+
+  <div class='hint'>
+    - **[строка]** => &lt;b&gt;[строка]&lt;/b&gt; (выделение жирным)<br>
+    - \\[строка]\\ => &lt;i&gt;[строка]&lt;/i&gt; (выделение курсивом)<br>
+    - ((name1/name2/name3 [строка])) => &lt;a href="[site]name1/name2/name3"&gt;[строка]&lt;/a&gt; (ссылка)
+  </div>
+
+  <!--
+
+  Здесь, я бы лучше сделал так ...
+
+  <div class='cleaner h10'></div>
+
+  <%#= f.label :p_id %>
+  <div class='cleaner h5'></div>
+  <%#= f.collection_select :p_id, Sheet.where.not(p_id: @sheet.id).to_a, :id, :title,
+                           { include_blank: true },
+                           class: 'select' %>
+
+  ... но по заданию нужно так ...
+
+  -->
+
+  <%= f.hidden_field :p_id %>
+
+  <div class='cleaner h10'></div>
+
+  <%= f.submit @sheet.new_record? ? 'Добавить страницу' : 'Отредактировать страницу', id: 'add' %>
+
+<% end %>

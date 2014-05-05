@@ -1,0 +1,8 @@
+ru:
+  activerecord:
+    attributes:
+      sheet:
+        name: Имя (сслыка)
+        title: Заголовок
+        text: Текст
+        p_id: Родительская страница
