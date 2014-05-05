@@ -55,7 +55,7 @@ Wiki::Application.configure do
   # config.cache_store = :mem_cache_store
 
   config.cache_store = :redis_store,
-                        'redis://rediscloud:8trQlJl3n5KXs6AL@pub-redis-14372.us-east-1-3.1.ec2.garantiadata.com:14372',
+                        'redis://rediscloud:gPEkF8hDmFzxhnpP@pub-redis-14541.us-east-1-3.1.ec2.garantiadata.com:14541',
                         { :namespace => '_abak_press', :expires_in => 1.day }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
