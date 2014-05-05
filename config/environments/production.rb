@@ -56,7 +56,7 @@ Wiki::Application.configure do
 
   config.cache_store = :redis_store,
                         'redis://rediscloud:gPEkF8hDmFzxhnpP@pub-redis-14541.us-east-1-3.1.ec2.garantiadata.com:14541',
-                        { :namespace => '_abak_press', :expires_in => 1.day }
+                        { expires_in: 90.minutes }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = "http://assets.example.com"
