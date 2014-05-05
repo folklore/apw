@@ -23,7 +23,7 @@ class Sheet < ActiveRecord::Base
               class_name: 'Sheet',
               foreign_key: :p_id
 
-  has_many :children, -> { includes(:children, :parent) },
+  has_many :children, -> { includes(:children, :parent).order('id ASC') },
             class_name: 'Sheet',
             foreign_key: :p_id
 
@@ -48,7 +48,8 @@ class Sheet < ActiveRecord::Base
   # (те что не имеют родитесльких страниц)
   def self.all_cache
     Rails.cache.fetch('sheets') { includes(:children)
-                                 .where(p_id: nil).to_a }
+                                 .where(p_id: nil)
+                                 .order('id ASC').to_a }
   end
 
   # кеш единичной страницы
