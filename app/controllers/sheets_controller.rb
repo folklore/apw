@@ -1,6 +1,6 @@
 class SheetsController < ApplicationController
-  before_action :check_exists_parent_pages, only: [:show, :edit]
   before_action :get_sheet, only: [:show, :edit]
+  before_action :check_exists_parent_pages, only: [:show, :edit]
 
   def index
   end
@@ -47,10 +47,10 @@ class SheetsController < ApplicationController
     end
 
     def check_exists_parent_pages
-      parent_names = params[:parent_names]
+      pn = params[:parent_names]
 
-      parent_names.split('/').each do |name|
-        raise ActionController::RoutingError.new('Not Found') unless Sheet.one_cache(name)
+      if pn != @sheet.parent_names.join('/')
+        raise ActionController::RoutingError.new('Not Found')
       end
     end
 
