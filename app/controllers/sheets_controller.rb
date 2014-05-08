@@ -49,7 +49,7 @@ class SheetsController < ApplicationController
     def check_exists_parent_pages
       pn = params[:parent_names]
 
-      if pn != @sheet.parent_names.join('/')
+      if pn.to_s != @sheet.parent_names.join('/')
         raise ActionController::RoutingError.new('Not Found')
       end
     end
