@@ -1,6 +1,6 @@
 <h1><%= @sheet.title %></h1>
 
-<%= simple_format @sheet.sanitize_text %>
+<%= simple_format sanitize_text(@sheet.text) %>
 
 <%= content_for :submenu do %>
   <ul>
