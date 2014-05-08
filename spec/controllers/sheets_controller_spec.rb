@@ -42,6 +42,12 @@ describe SheetsController do
       expect(assigns(:sheet)).to eq(sheet1)
     end
 
+    it "should respond with a 404" do
+      sheet = build(:main_sheet)
+      get 'show', id: sheet
+      response.should render_template 'sheets/404'
+      response.response_code.should == 404
+    end
   end
 
   describe "GET #new" do
@@ -82,9 +88,17 @@ describe SheetsController do
 
   describe "GET #edit" do
     it "returns http success with an HTTP 200 status code" do
-      get 'edit', id: 1
+      sheet = create(:main_sheet)
+      get 'edit', id: sheet
       response.should be_success
       expect(response.status).to eq(200)
+    end
+
+    it "should respond with a 404" do
+      sheet = build(:main_sheet)
+      get 'edit', id: sheet
+      response.should render_template 'sheets/404'
+      response.response_code.should == 404
     end
   end
 

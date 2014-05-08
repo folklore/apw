@@ -1,6 +1,6 @@
 class SheetsController < ApplicationController
   before_action :get_sheet, only: [:show, :edit]
-  before_action :check_exists_parent_pages, only: [:show, :edit]
+  before_action :check_exists_page_and_parent_pages, only: [:show, :edit]
 
   def index
   end
@@ -46,11 +46,11 @@ class SheetsController < ApplicationController
       @sheet = Sheet.one_cache(params[:id])
     end
 
-    def check_exists_parent_pages
+    def check_exists_page_and_parent_pages
       pn = params[:parent_names]
 
-      if pn.to_s != @sheet.parent_names.join('/')
-        raise ActionController::RoutingError.new('Not Found')
+      if @sheet.nil? or pn.to_s != @sheet.parent_names.join('/')
+        render template: "sheets/404", status: 404 and return
       end
     end
 
