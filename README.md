@@ -1,3 +1,1 @@
-Можно посмотреть по следующей ссылке ...
 
-**[apw](http://frozen-temple-2626.herokuapp.com/)**
